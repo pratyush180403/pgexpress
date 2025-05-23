@@ -18,13 +18,7 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font",
-      [
-        "expo-web-browser",
-        {
-          "packageName": "com.example.webBrowser"
-        }
-      ]
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
