@@ -1,7 +1,10 @@
 const { getDefaultConfig } = require('expo/metro-config');
 
 /** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(__dirname);
+const config = getDefaultConfig(__dirname, {
+  // Enable CSS support for web
+  isCSSEnabled: true,
+});
 
 // Handle TypeScript and other file extensions
 config.resolver.sourceExts = [
