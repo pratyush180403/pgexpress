@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import { Bell, Calendar, CreditCard, PenTool as Tool, MessageSquare } from 'lucide-react-native';
 import { useTheme } from '@/components/ThemeContext';
 

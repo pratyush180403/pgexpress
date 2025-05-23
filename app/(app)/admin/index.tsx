@@ -1,6 +1,6 @@
-```typescript
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { Checkbox } from '@/components/ui/Checkbox';
 import { useTheme } from '@/components/ThemeContext';
 import { useAuthContext } from '@/components/AuthContext';
 import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
@@ -171,4 +171,3 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
 });
-```
