@@ -15,7 +15,8 @@ config.resolver.sourceExts = [
   'tsx',
   'cjs',
   'mjs',
-  'd.ts'
+  'd.ts',
+  '.ts'
 ];
 
 module.exports = config;
