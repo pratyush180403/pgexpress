@@ -22,6 +22,7 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
