@@ -1,44 +1,45 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useFonts, Inter_400Regular, Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';
-import * as SplashScreen from 'expo-splash-screen';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
+import { useFonts } from 'expo-font';
+import { 
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold 
+} from '@expo-google-fonts/roboto';
+import { SplashScreen } from 'expo-router';
 
-// Keep the splash screen visible while fonts are loaded
+// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   useFrameworkReady();
 
   const [fontsLoaded, fontError] = useFonts({
-    'Inter-Regular': Inter_400Regular,
-    'Inter-Medium': Inter_500Medium,
-    'Inter-Bold': Inter_700Bold,
+    'Roboto-Regular': Roboto_400Regular,
+    'Roboto-Medium': Roboto_500Medium,
+    'Roboto-Bold': Roboto_700Bold,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useEffect(() => {
     if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
+      // Hide the splash screen after the fonts have loaded (or an error was reported) and the UI is ready.
+      SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError]);
 
-  useEffect(() => {
-    onLayoutRootView();
-  }, [onLayoutRootView]);
-
+  // Prevent rendering until the font has loaded or an error was reported
   if (!fontsLoaded && !fontError) {
     return null;
   }
 
   return (
     <>
-      <StatusBar style="auto" />
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
-        <Stack.Screen name="(app)" options={{ animation: 'fade' }} />
-        <Stack.Screen name="+not-found" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="+not-found" />
       </Stack>
+      <StatusBar style="auto" />
     </>
   );
 }
