@@ -16,7 +16,16 @@ config.resolver.sourceExts = [
   'cjs',
   'mjs',
   'd.ts',
-  '.ts'
 ];
+
+config.transformer.babelTransformerPath = require.resolve('react-native-babel-transformer');
+
+config.transformer.assetPlugins = ['expo-asset/tools/hashAssetFiles'];
+
+config.watchFolders = [__dirname + '/src'];
+
+config.resolver.nodeModulesPaths = [__dirname + '/node_modules'];
+
+config.transpilePackages = ['expo-modules-core'];
 
 module.exports = config;
