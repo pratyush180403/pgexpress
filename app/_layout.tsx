@@ -2,15 +2,10 @@ import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
-import { useFonts } from 'expo-font';
-import { 
-  Roboto_400Regular,
-  Roboto_500Medium,
-  Roboto_700Bold 
-} from '@expo-google-fonts/roboto';
-import { SplashScreen } from 'expo-router';
+import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import * as SplashScreen from 'expo-splash-screen';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+// Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -24,12 +19,12 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
-      // Hide the splash screen after the fonts have loaded (or an error was reported) and the UI is ready.
+      // Hide splash screen once fonts are loaded or if there's an error
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError]);
 
-  // Prevent rendering until the font has loaded or an error was reported
+  // Show splash screen while fonts are loading
   if (!fontsLoaded && !fontError) {
     return null;
   }
