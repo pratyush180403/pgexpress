@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
-import { Bell, Calendar, CreditCard, PenTool as Tool, MessageSquare } from 'lucide-react-native';
+import { Bell, Calendar, CreditCard, PenTool, MessageSquare } from 'lucide-react-native';
 import { useTheme } from '@/components/ThemeContext';
 
 type NotificationType = 'all' | 'payment' | 'maintenance' | 'announcement';
@@ -79,7 +79,7 @@ export default function NotificationsScreen() {
       case 'payment':
         return <CreditCard size={20} color={colors.primary} />;
       case 'maintenance':
-        return <Tool size={20} color={colors.primary} />;
+        return <PenTool size={20} color={colors.primary} />;
       case 'announcement':
         return <MessageSquare size={20} color={colors.primary} />;
       default:

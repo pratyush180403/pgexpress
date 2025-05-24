@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TextInput, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Search, Plus, Filter, Phone, MessageSquare } from 'lucide-react-native';
 import { useTheme } from '@/components/ThemeContext';
